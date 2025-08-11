@@ -1,0 +1,8 @@
+[title]Credits[/title]
+
+[heading]A Quadrillion Kittens[/heading]
+[url]https://petakitten.itch.io[/url]
+
+Debugger
+VFX Artist
+UI Developer

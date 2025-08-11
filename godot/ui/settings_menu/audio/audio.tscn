@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://crh4n3bgv7kv1"]
+
+[ext_resource type="Script" uid="uid://66yug01i26gr" path="res://ui/settings_menu/audio/audio.gd" id="1_61j12"]
+[ext_resource type="Script" uid="uid://8bu0csq026ha" path="res://ui/settings_menu/audio/audio_bus_flag.gd" id="2_x04nv"]
+
+[sub_resource type="Resource" id="Resource_wkam8"]
+script = ExtResource("2_x04nv")
+buses = 7
+metadata/_custom_type_script = "uid://8bu0csq026ha"
+
+[node name="Audio" type="MarginContainer" node_paths=PackedStringArray("template_label", "template_slider", "container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61j12")
+template_label = NodePath("GridContainer/Label")
+template_slider = NodePath("GridContainer/HSlider")
+container = NodePath("GridContainer")
+exposed_buses = SubResource("Resource_wkam8")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Audio Bus"
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+
+[node name="Debouncer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="Samples" type="Node" parent="."]
+unique_name_in_owner = true

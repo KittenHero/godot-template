@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cditkf2r57h17"]
+
+[ext_resource type="Script" uid="uid://c2uwwipfnl8jn" path="res://autoload/live_debug/live_debug.gd" id="1_kmyp1"]
+
+[node name="LiveDebug" type="VBoxContainer"]
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kmyp1")

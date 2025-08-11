@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://br7go8e4kgyma"]
+
+[ext_resource type="Script" uid="uid://cmbj50wyxka1v" path="res://ui/settings_menu/save_settings.gd" id="1_gl4li"]
+[ext_resource type="PackedScene" uid="uid://crh4n3bgv7kv1" path="res://ui/settings_menu/audio/audio.tscn" id="2_l8i4v"]
+[ext_resource type="PackedScene" uid="uid://q2rxr31xymta" path="res://ui/settings_menu/graphics/graphics.tscn" id="3_30ta7"]
+[ext_resource type="PackedScene" uid="uid://b7hee7psntl4t" path="res://ui/settings_menu/input/input.tscn" id="3_jg1fs"]
+
+[node name="Settings" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gl4li")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Input" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("3_jg1fs")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Graphics" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("3_30ta7")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Audio" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("2_l8i4v")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

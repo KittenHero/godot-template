@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvem5okgfig4o"]
+
+[ext_resource type="Script" uid="uid://cly0jxufex3ma" path="res://ui/credits/credits.gd" id="1_ydyd3"]
+
+[node name="Credits" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ydyd3")
+credits_file_path = "res://ui/credits/credits.txt"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TopSpacer" type="Control" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CreditsText" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+focus_mode = 2
+bbcode_enabled = true
+text = "[font_size=64]Credits[/font_size]
+
+[font_size=48]A Quadrillion Kittens[/font_size]
+[url]https://petakitten.itch.io[/url]
+
+Debugger
+VFX Artist
+UI Developer
+"
+fit_content = true
+scroll_active = false
+scroll_following = true
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+selection_enabled = true
+drag_and_drop_selection_enabled = false
+
+[node name="BottomSpacer" type="Control" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AutoScrollTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0

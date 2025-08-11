@@ -1,0 +1,136 @@
+[gd_scene load_steps=6 format=3 uid="uid://du7q53bd26wx2"]
+
+[ext_resource type="Script" uid="uid://dglpli2pqbpul" path="res://ui/main_menu/main_menu.gd" id="1_i5wg5"]
+[ext_resource type="Script" uid="uid://dk2ghsmnta7yb" path="res://ui/submenu.gd" id="1_omy8q"]
+[ext_resource type="PackedScene" uid="uid://br7go8e4kgyma" path="res://ui/settings_menu/settings.tscn" id="1_uhj5c"]
+[ext_resource type="Script" uid="uid://dmqgxl2pto2nd" path="res://ui/animations/scale_animation.gd" id="2_3c04x"]
+[ext_resource type="PackedScene" uid="uid://dvem5okgfig4o" path="res://ui/credits/credits.tscn" id="2_mu8pm"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i5wg5")
+main_scene = "uid://b7e18yjiw5qwf"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "TItle"
+horizontal_alignment = 1
+
+[node name="ScaleAnimation" type="Node" parent="VBoxContainer/Title"]
+script = ExtResource("2_3c04x")
+duration = 0.3
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="Subtitle" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "A Quadrillion Kittens Game"
+horizontal_alignment = 1
+
+[node name="ScaleAnimation" type="Node" parent="VBoxContainer/Subtitle"]
+script = ExtResource("2_3c04x")
+duration = 0.3
+delay = 0.4
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"
+
+[node name="ScaleAnimation" type="Node" parent="VBoxContainer/StartButton"]
+script = ExtResource("2_3c04x")
+delay = 0.6
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+
+[node name="ScaleAnimation" type="Node" parent="VBoxContainer/SettingsButton"]
+script = ExtResource("2_3c04x")
+delay = 0.7
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits"
+
+[node name="ScaleAnimation" type="Node" parent="VBoxContainer/CreditsButton"]
+script = ExtResource("2_3c04x")
+delay = 0.8
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="ScaleAnimation" type="Node" parent="VBoxContainer/QuitButton"]
+script = ExtResource("2_3c04x")
+delay = 0.9
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Submenu" type="VBoxContainer" parent="." node_paths=PackedStringArray("main_menu", "back_button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("1_omy8q")
+main_menu = NodePath("../VBoxContainer")
+back_button = NodePath("Back")
+
+[node name="MarginContainer" type="PanelContainer" parent="Submenu"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" parent="Submenu/MarginContainer" instance=ExtResource("1_uhj5c")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Credits" parent="Submenu/MarginContainer" instance=ExtResource("2_mu8pm")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Submenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Back"
+
+[node name="ScaleAnimation" type="Node" parent="Submenu/Back"]
+script = ExtResource("2_3c04x")
+delay = 0.3
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="ScaleAnimation" type="Node" parent="Submenu"]
+script = ExtResource("2_3c04x")
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"

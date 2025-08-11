@@ -1,0 +1,119 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7e18yjiw5qwf"]
+
+[ext_resource type="Script" uid="uid://dee7sj5ogwsai" path="res://ui/pause_menu/pause_menu.gd" id="1_le02u"]
+[ext_resource type="Script" uid="uid://dk2ghsmnta7yb" path="res://ui/submenu.gd" id="2_b4b0p"]
+[ext_resource type="PackedScene" uid="uid://br7go8e4kgyma" path="res://ui/settings_menu/settings.tscn" id="3_c3jo5"]
+[ext_resource type="Script" uid="uid://dmqgxl2pto2nd" path="res://ui/animations/scale_animation.gd" id="4_b4b0p"]
+
+[node name="PauseMenu" type="MarginContainer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_le02u")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ScaleAnimation" type="Node" parent="PanelContainer"]
+script = ExtResource("4_b4b0p")
+target = NodePath("../..")
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="ScaleAnimation" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/Label"]
+script = ExtResource("4_b4b0p")
+delay = 0.2
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resume"
+
+[node name="ScaleAnimation" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/ResumeButton"]
+script = ExtResource("4_b4b0p")
+delay = 0.4
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Main Menu"
+
+[node name="ScaleAnimation" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/MainMenuButton"]
+script = ExtResource("4_b4b0p")
+delay = 0.5
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="SettingsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+
+[node name="ScaleAnimation" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/SettingsButton"]
+script = ExtResource("4_b4b0p")
+delay = 0.6
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="ScaleAnimation" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/QuitButton"]
+script = ExtResource("4_b4b0p")
+delay = 0.7
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="Submenu" type="VBoxContainer" parent="." node_paths=PackedStringArray("main_menu", "back_button")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("2_b4b0p")
+main_menu = NodePath("../PanelContainer")
+back_button = NodePath("Back")
+
+[node name="PanelContainer" type="PanelContainer" parent="Submenu"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" parent="Submenu/PanelContainer" instance=ExtResource("3_c3jo5")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Submenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Back"
+
+[node name="ScaleAnimation" type="Node" parent="Submenu/Back"]
+script = ExtResource("4_b4b0p")
+delay = 0.4
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"
+
+[node name="ScaleAnimation" type="Node" parent="Submenu"]
+script = ExtResource("4_b4b0p")
+metadata/_custom_type_script = "uid://dmqgxl2pto2nd"

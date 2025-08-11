@@ -1,0 +1,236 @@
+[gd_scene load_steps=5 format=3 uid="uid://q2rxr31xymta"]
+
+[ext_resource type="Script" uid="uid://xvblsrpt1hhy" path="res://ui/settings_menu/graphics/graphics.gd" id="1_ep1xo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_62dqa"]
+sky_top_color = Color(0.251768, 0.466857, 0.530093, 1)
+sky_horizon_color = Color(0.534166, 0.330016, 0.645445, 1)
+
+[sub_resource type="Sky" id="Sky_ep1xo"]
+sky_material = SubResource("ProceduralSkyMaterial_62dqa")
+
+[sub_resource type="Environment" id="Environment_v6bxj"]
+background_mode = 2
+sky = SubResource("Sky_ep1xo")
+ambient_light_source = 3
+
+[node name="Graphics" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ep1xo")
+
+[node name="Preview" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Preview"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Preview/SubViewport"]
+environment = SubResource("Environment_v6bxj")
+
+[node name="Camera2D" type="Camera3D" parent="Preview/SubViewport/WorldEnvironment"]
+current = true
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_right = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="ResolutionLabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Resolution"
+
+[node name="Resolution" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "Full Screen"
+popup/item_0/id = 3
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 0
+popup/item_2/text = "1600x900"
+popup/item_2/id = 1
+popup/item_3/text = "1280x720"
+popup/item_3/id = 2
+popup/item_4/text = "960x540"
+popup/item_4/id = 4
+
+[node name="PresetLabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Quality Preset"
+
+[node name="Preset" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 6
+popup/item_0/text = "Ultra"
+popup/item_0/id = 0
+popup/item_1/text = "High"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "Low"
+popup/item_3/id = 3
+popup/item_4/text = "Lowest"
+popup/item_4/id = 4
+popup/item_5/text = "Custom"
+popup/item_5/id = 5
+
+[node name="VsyncLabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Vsync"
+
+[node name="Vsync" type="CheckButton" parent="Panel/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+
+[node name="GILabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Global Illumination"
+
+[node name="GI" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "SDFGI"
+popup/item_0/id = 0
+popup/item_1/text = "SDFGI - Half"
+popup/item_1/id = 1
+popup/item_2/text = "Disabled"
+popup/item_2/id = 2
+
+[node name="SSRLabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Reflections"
+
+[node name="SSR" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 4
+popup/item_0/text = "High"
+popup/item_0/id = 1
+popup/item_1/text = "Medium"
+popup/item_1/id = 2
+popup/item_2/text = "Low"
+popup/item_2/id = 3
+popup/item_3/text = "Disabled"
+popup/item_3/id = 5
+
+[node name="SSAOLabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Ambient Occlusion"
+
+[node name="SSAO" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 6
+popup/item_0/text = "Ultra"
+popup/item_0/id = 0
+popup/item_1/text = "High"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "Low"
+popup/item_3/id = 3
+popup/item_4/text = "Very Low"
+popup/item_4/id = 4
+popup/item_5/text = "Disabled"
+popup/item_5/id = 5
+
+[node name="SSILLabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Indirect Lighting"
+
+[node name="SSIL" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 6
+popup/item_0/text = "Ultra"
+popup/item_0/id = 0
+popup/item_1/text = "High"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "Low"
+popup/item_3/id = 3
+popup/item_4/text = "Very Low"
+popup/item_4/id = 4
+popup/item_5/text = "Disabled"
+popup/item_5/id = 5
+
+[node name="SSSLabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Subsurface Scattering"
+
+[node name="SSS" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 4
+popup/item_0/text = "High"
+popup/item_0/id = 1
+popup/item_1/text = "Medium"
+popup/item_1/id = 2
+popup/item_2/text = "Low"
+popup/item_2/id = 3
+popup/item_3/text = "Disabled"
+popup/item_3/id = 5
+
+[node name="GlowLabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Glow"
+
+[node name="Glow" type="OptionButton" parent="Panel/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Bicubic (Slow)"
+popup/item_0/id = 1
+popup/item_1/text = "Linear (Fast)"
+popup/item_1/id = 2
+popup/item_2/text = "Disabled"
+popup/item_2/id = 5
