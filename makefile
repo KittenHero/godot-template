@@ -4,6 +4,7 @@ PROJECT_DIR:=godot
 ITCH_USER:=petakitten
 GAME_NAME:=godot-template
 ITCH_PROJECT:=$(ITCH_USER)/$(GAME_NAME)
+PROJECT_FILES:=$(shell find $(PROJECT_DIR) -name project.godot -o -name export_presets.cfg -o -name *.tscn -o -name *.scn -o -name *.tres -o -name *.res)
 
 all: $(PLATFORMS:%=$(BUILD_DIR)/%.itch-upload)
 
@@ -12,7 +13,7 @@ zip: $(PLATFORMS:%=$(BUILD_DIR)/%.zip)
 $(PLATFORMS:%=$(BUILD_DIR)/%):
 	@mkdir -p $@
 
-$(BUILD_DIR)/%.zip: $(PROJECT_DIR)/project.godot $(PROJECT_DIR)/export_presets.cfg | $(BUILD_DIR)/%
+$(BUILD_DIR)/%.zip: $(PROJECT_FILES) | $(BUILD_DIR)/%
 	godot --path $(PROJECT_DIR) --headless --export-debug $*
 	cd $(@D) && zip $*.zip -r $*/
 
