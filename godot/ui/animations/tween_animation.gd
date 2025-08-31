@@ -12,7 +12,7 @@ var initial_value : Variant = null
 var final_value : Variant  = null
 
 var default_value : Variant
-var node : Control
+var node : CanvasItem
 var tween : Tween
 
 signal finished();
@@ -24,7 +24,6 @@ func _ready() -> void:
 
 func set_up() -> void:
 	if not node.is_visible_in_tree(): return
-	node.pivot_offset = node.size / 2
 	default_value = node[property]
 	if final_value == null: final_value = default_value
 	if initial_value == null: initial_value = default_value

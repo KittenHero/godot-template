@@ -9,3 +9,9 @@ func _ready() -> void:
 	initial_value = initial_scale
 	final_value = final_scale
 	super()
+
+func set_up() -> void:
+	if node is Control:
+		var control := node as Control
+		control.pivot_offset = control.size / 2
+	super()
