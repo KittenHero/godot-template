@@ -43,7 +43,7 @@ func process_text(text: String) -> String:
 			text.replace("[%s]" % key, "[%s]" % preprocess_text[key])
 			.replace(
 				"[/%s]" % key,
-				"[/%s]" %  (preprocess_text[key] as String)
+				"[/%s]" %  str(preprocess_text[key])
 					.get_slice(" ", 0)
 					.get_slice("=", 0)
 			)

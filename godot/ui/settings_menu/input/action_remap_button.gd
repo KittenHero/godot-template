@@ -33,7 +33,7 @@ func _input(event: InputEvent) -> void:
 	if not (
 		event is InputEventKey
 		or event is InputEventJoypadButton
-		or event is InputEventJoypadMotion and abs(event.axis_value) > 0.5
+		or event is InputEventJoypadMotion and abs((event as InputEventJoypadMotion).axis_value) > 0.5
 	):
 		return
 	remap_action_to(event)

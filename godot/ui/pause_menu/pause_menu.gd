@@ -33,7 +33,7 @@ func toggle(on: bool) -> void:
 	get_viewport().set_input_as_handled()
 
 func go_to_main_menu() -> void:
-	var main_menu := ProjectSettings.get_setting("application/run/main_scene") as String
+	var main_menu := str(ProjectSettings.get_setting("application/run/main_scene"))
 	SceneLoader.load_scene(main_menu)
 
 func quit() -> void:
