@@ -4,7 +4,7 @@ PROJECT_DIR:=godot
 ITCH_USER:=petakitten
 GAME_NAME:=godot-template
 ITCH_PROJECT:=$(ITCH_USER)/$(GAME_NAME)
-PROJECT_FILES:=$(shell find $(PROJECT_DIR) -name project.godot -o -name export_presets.cfg -o -name *.tscn -o -name *.scn -o -name *.tres -o -name *.res)
+PROJECT_FILES:=$(shell find $(PROJECT_DIR) -name project.godot -o -name export_presets.cfg -o -name *.tscn -o -name *.scn -o -name *.tres -o -name *.res -printf '%p\n' | sed 's/ /\\ /g')
 
 all: $(PLATFORMS:%=$(BUILD_DIR)/%.itch-upload)
 
