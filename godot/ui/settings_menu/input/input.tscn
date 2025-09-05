@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_ymdks"]
 script = ExtResource("2_ymdks")
-name = &"ui_menu"
+name = &"pause"
 label = "Menu"
 metadata/_custom_type_script = "uid://ce5ws5u0dvg68"
 

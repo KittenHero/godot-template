@@ -13,16 +13,18 @@ func _ready() -> void:
  
 func reload() -> void:
 	if not InputMap.has_action(action): return
-	mapped_event = InputMap.action_get_events(action)[0]
-	text = mapped_event.as_text()
+	for event in InputMap.action_get_events(action):
+		if Action.scheme(event) == Settings.current_input_scheme:
+			mapped_event = event
+			text = Action.display_text(mapped_event)
 
 func remap_action_to(event: InputEvent) -> void:
 	if not InputMap.has_action(action): return
-	InputMap.action_erase_events(action)
+	InputMap.action_erase_event(action, event)
 	InputMap.action_add_event(action, event)
 	Settings.action_remap[action] = event
 	mapped_event = event
-	text = event.as_text()
+	text = Action.display_text(event)
  
 func _on_pressed() -> void:
 	set_process_input(true)
@@ -32,6 +34,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_released(): return
 	if not (
 		event is InputEventKey
+		or event is InputEventMouseButton
 		or event is InputEventJoypadButton
 		or event is InputEventJoypadMotion and abs((event as InputEventJoypadMotion).axis_value) > 0.5
 	):
